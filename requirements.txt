@@ -1,1 +1,0 @@
-/Users/michaeltran/envs/sd-mlx/requirements.txt
