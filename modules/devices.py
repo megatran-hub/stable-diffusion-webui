@@ -47,20 +47,21 @@ def get_cuda_device_string():
     return "cuda"
 
 
+
 def get_optimal_device_name():
-    if torch.cuda.is_available():
-        return get_cuda_device_string()
+    # Original CUDA/XPU/NPU logic (commented out)
+    # if torch.cuda.is_available():
+    #     return get_cuda_device_string()
+    # if has_xpu():
+    #     return xpu_specific.get_xpu_device_string()
+    # if has_npu():
+    #     return npu_specific.get_npu_device_string()
+    # return "cpu"
 
-    if has_mps():
-        return "mps"
-
-    if has_xpu():
-        return xpu_specific.get_xpu_device_string()
-
-    if npu_specific.has_npu:
-        return npu_specific.get_npu_device_string()
-
-    return "cpu"
+    # Force Metal GPU (MPS) instead
+    if torch.backends.mps.is_available():
+        return "mps"  # Force Metal GPU
+    return "cpu"  # Fallback to CPU if MPS isn't available
 
 
 def get_optimal_device():
@@ -117,7 +118,15 @@ fp8: bool = False
 # Force fp16 for all models in inference. No casting during inference.
 # This flag is controlled by "--precision half" command line arg.
 force_fp16: bool = False
-device: torch.device = None
+
+# Original device selection (commented out)
+# device: torch.device = None
+
+# Force MPS (Metal GPU)
+device: torch.device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+print(f"Using device: {device}")  # Debugging message
+
+
 device_interrogate: torch.device = None
 device_gfpgan: torch.device = None
 device_esrgan: torch.device = None

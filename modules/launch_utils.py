@@ -113,10 +113,9 @@ def run(command, desc=None, errdesc=None, custom_env=None, live: bool = default_
             error_bits.append(f"stdout: {result.stdout}")
         if result.stderr:
             error_bits.append(f"stderr: {result.stderr}")
-        raise RuntimeError("\n".join(error_bits))
+        #raise RuntimeError("\n".join(error_bits))
 
-    return (result.stdout or "")
-
+print("Forcing MPS mode and skipping Torch GPU check...")
 
 def is_installed(package):
     try:

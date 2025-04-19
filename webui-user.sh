@@ -1,3 +1,8 @@
+export NO_WATERMARK=1
+
+export COMMANDLINE_ARGS="--use-mps --skip-torch-cuda-test --skip-install --no-half --precision full --no-half-vae"
+
+
 #!/bin/bash
 #########################################################
 # Uncomment and change the variables below to your need:#

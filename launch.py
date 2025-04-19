@@ -19,7 +19,15 @@ git_clone = launch_utils.git_clone
 git_pull_recursive = launch_utils.git_pull_recursive
 list_extensions = launch_utils.list_extensions
 run_extension_installer = launch_utils.run_extension_installer
-prepare_environment = launch_utils.prepare_environment
+
+#prepare_environment = launch_utils.prepare_environment
+
+def prepare_environment():
+    print("Skipping environment setup and requirement installation...")
+
+prepare_environment()
+
+
 configure_for_tests = launch_utils.configure_for_tests
 start = launch_utils.start
 
