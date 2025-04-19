@@ -42,3 +42,6 @@ notification.mp3
 /cache
 trace.json
 /sysinfo-????-??-??-??-??.json
+embeddings_backup/
+modules.devices.py.save
+modules/textual_inversion/textual_inversion_backup.py
